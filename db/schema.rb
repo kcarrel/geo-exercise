@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_230025) do
+ActiveRecord::Schema.define(version: 2020_12_12_232524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,4 +24,15 @@ ActiveRecord::Schema.define(version: 2020_12_12_230025) do
     t.index ["coordinate"], name: "index_geocache_objects_on_coordinate", using: :gist
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.bigint "geocache_object_id"
+    t.datetime "active_at"
+    t.datetime "inactive_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["geocache_object_id"], name: "index_items_on_geocache_object_id"
+  end
+
+  add_foreign_key "items", "geocache_objects"
 end
