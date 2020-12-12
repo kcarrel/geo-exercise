@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_12_12_230025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
+
+  create_table "geocache_objects", force: :cascade do |t|
+    t.string "name"
+    t.geography "coordinate", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coordinate"], name: "index_geocache_objects_on_coordinate", using: :gist
+  end
 
 end
