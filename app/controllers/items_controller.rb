@@ -1,4 +1,14 @@
 class ItemsController < ApplicationController
+    
+    def index 
+        itemsArr = Item.all.where(geocache_object_id: params[:geocache_object_id])
+        @items = itemsArr.select { |item| item.active? == true }
+        if @items.count > 0 
+            render json: @items 
+        else 
+            render json: { error: 'The queried Geocache Object does not contain active objects.'}, status: 400
+        end
+    end
 
     def create 
         item_params = params.require(:item).permit(:name, :geocache_object_id, :active_at, :inactive_at)
@@ -21,5 +31,5 @@ class ItemsController < ApplicationController
             render json: @item
         end
     end
-    
+
 end

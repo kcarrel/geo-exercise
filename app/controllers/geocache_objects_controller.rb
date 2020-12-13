@@ -1,5 +1,8 @@
 class GeocacheObjectsController < ApplicationController
 
+    def active_items 
+    end
+
     def create 
         geocache_object_params = params.require(:geocache_object).permit(:name, :coordinate)
         @geocache_object = GeocacheObject.create(geocache_object_params)
