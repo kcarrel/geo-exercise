@@ -1,24 +1,18 @@
-# README
+# Geo Exercise API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to Run Locally
+- Step 1: git clone 
+- Step 2: cd into the local repository copy
+- Step 3: bundle install
+- Step 4: rails s
 
-Things you may want to cover:
+## Technology Used
+- Ruby on Rails 
+- RSpec
+- PostGIS
 
-* Ruby version
+## Routes 
+* **GET /geocache_objects/${GeocacheObjectId}/items** - get all active items from a given geocache object
+* **POST /items** - add a new item
+* **PATCH /item/${ItemId}** - update an item's associated geocache object
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
