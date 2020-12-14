@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
         itemsArr = Item.all.where(geocache_object_id: params[:geocache_object_id])
         @items = itemsArr.select { |item| item.active? == true }
         if @items.count > 0 
-            render json: @items 
+            render json: @items, status: 201
         else 
             render json: { error: 'The queried Geocache Object does not contain active objects.'}, status: 400
         end
@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
         item_params = params.require(:item).permit(:name, :geocache_object_id, :active_at, :inactive_at)
         @item = Item.create(item_params)
         if @item.valid?
-            render json: @item
+            render json: @item, status: 201
         else 
             render json: { error: 'Failed to create item' }, status: 400
         end
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
             render json: { error: 'Failed to update. A Geocache Object cannot contain 3 or more items.' }, status: 400 
         else 
             @item.update(item_params)
-            render json: @item
+            render json: @item, status: 201
         end
     end
 

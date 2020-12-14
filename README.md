@@ -1,10 +1,14 @@
 # Geo Exercise API
 
 ## How to Run Locally
-- Step 1: git clone 
+- Step 1: git clone git@github.com:kcarrel/geo-exercise.git
 - Step 2: cd into the local repository copy
 - Step 3: bundle install
-- Step 4: rails s
+- Step 4: rails s to start server
+
+## How to Run Tests
+- Step 1: While in the local repository copy run 'rspec ./spec/models/item_spec.rb' to run the model tests for Item.
+- Step 2: While in the local repository copy run 'rspec ./spec/controllers/item_spec.rb' to run the controller tests for Item.
 
 ## Technology Used
 - Ruby on Rails 
