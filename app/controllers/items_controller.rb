@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
         if @items.count > 0 
             render json: @items, status: 201
         else 
-            render json: { error: 'The queried Geocache Object does not contain active objects.'}, status: 400
+            render json: { error: 'The queried Geocache Object does not contain active items.'}, status: 400
         end
     end
 
@@ -26,6 +26,8 @@ class ItemsController < ApplicationController
         geocache_object = GeocacheObject.find(item_params[:geocache_object_id])
         if geocache_object.items.count >= 3 
             render json: { error: 'Failed to update. A Geocache Object cannot contain 3 or more items.' }, status: 400 
+        elsif !@item.active?
+            render json: { error: 'Failed to update. An inactive Item cannot be moved to a new Geocache Object.' }, status: 400 
         else 
             @item.update(item_params)
             render json: @item, status: 201
