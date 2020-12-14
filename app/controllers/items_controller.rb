@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
         if @item.valid?
             render json: @item, status: 201
         else 
-            render json: { error: 'Failed to create item' }, status: 400
+            render json: { error: 'Failed to create item.' }, status: 400
         end
     end
 

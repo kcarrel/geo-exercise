@@ -3,6 +3,7 @@ class Item < ApplicationRecord
 
   validates :name, uniqueness: true, length: { maximum: 50}, format: { with: /\A[a-zA-Z0-9 ]+\z/,
     message: "only allows letters, numbers and spaces" }
+  validates :active_at, :inactive_at, presence: true
 
   def active?
     return true if self.active_at < DateTime.now && self.inactive_at > DateTime.now
