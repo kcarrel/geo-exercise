@@ -1,4 +1,4 @@
-# Geocache API Exerice
+# Geocache API Exercise
 
 ## How to Run Locally
 - Step 1: git clone git@github.com:kcarrel/geo-exercise.git
